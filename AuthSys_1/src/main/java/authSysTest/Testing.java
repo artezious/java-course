@@ -1,13 +1,10 @@
 package authSysTest;
 
 import authSysService.AdminMode;
-import authSysService.MainThread;
 import authSysService.UserMode;
 import authSysService.UserRole;
-import userBase.User;
 import userBase.UserDB;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -37,7 +34,7 @@ public class Testing {
                 System.out.println("Enter password");
                 String password = scanner.next();
 
-                userRole =  userDB.userSearch(username,password);
+                userRole = userDB.userSearch(username, password);
 
                 if (userRole.equals(UserRole.ADMIN)) {
                     AdminMode.adminCommonMethod();

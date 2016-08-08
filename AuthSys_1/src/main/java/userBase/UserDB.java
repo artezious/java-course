@@ -22,7 +22,7 @@ public class UserDB {
         this.userDB = userDB;
     }
 
-    public void  fillDB () {
+    public void fillDB() {
 
         Scanner scanner = new Scanner(System.in);
         MainThread mainThread = new MainThread();
@@ -46,7 +46,7 @@ public class UserDB {
 
     }
 
-    public UserRole userSearch (String username, String password) {
+    public UserRole userSearch(String username, String password) {
 
         getUserDB();
         for (int i = 0; i < getUserDB().length; i++)
