@@ -17,29 +17,14 @@ public class Testing {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        MainThread mainThread = new MainThread();
         UserDB userDB = new UserDB();
-        UserRole userRole = UserRole.ANONYM;
+        UserRole userRole;
 
-        System.out.println("Enter amount of users");
-        int userCount = scanner.nextInt();
-
-        for (int i = 0; i < userCount; i++) {
-
-            System.out.println("Enter username");
-            String username = scanner.next();
-            System.out.println("Enter password");
-            String password = scanner.next();
-
-            User newuser = new User(username, password, mainThread.authCheck(username, password));
-            userDB.addNewUser(newuser);
-        }
-
-        System.out.println(userDB);
+        userDB.fillDB();
 
 
         System.out.println("DataBase ready. Do  you want to proceed to functionality? Y/N");
+        Scanner scanner = new Scanner(System.in);
         String choice = scanner.next();
 
         switch (choice) {
@@ -52,19 +37,13 @@ public class Testing {
                 System.out.println("Enter password");
                 String password = scanner.next();
 
-                for (int i = 0; i < userDB.getUserDB().length; i++) {
-                    if (username.equals(userDB.getUserDB()[i].getUsername()) &&
-                            password.equals(userDB.getUserDB()[i].getPassword())) {
-                        userRole = userDB.getUserDB()[i].getUserRole();
-                        break;
-                    }
-                }
+                userRole =  userDB.userSearch(username,password);
+
                 if (userRole.equals(UserRole.ADMIN)) {
                     AdminMode.adminCommonMethod();
                 } else if (userRole.equals(UserRole.USER)) {
                     UserMode.userCommonMethod();
                 }
-
         }
     }
 

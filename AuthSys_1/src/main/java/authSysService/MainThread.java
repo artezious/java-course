@@ -1,5 +1,8 @@
 package authSysService;
 
+import userBase.User;
+import userBase.UserDB;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -51,8 +54,8 @@ public class MainThread {
         } else userRole = ANONYM;
 
         return userRole;
-
     }
-
 }
+
+
 
