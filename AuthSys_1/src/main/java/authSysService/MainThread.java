@@ -37,10 +37,10 @@ public class MainThread {
 
     public UserRole authCheck(String username, String password) {
 
-        String adminName = adminProperty.getProperty(username);
-        String adminPassword = adminProperty.getProperty(password);
-        String userName = userProperty.getProperty(username);
-        String userPassword = userProperty.getProperty(password);
+        String adminName = adminProperty.getProperty("username");
+        String adminPassword = adminProperty.getProperty("password");
+        String userName = userProperty.getProperty("username");
+        String userPassword = userProperty.getProperty("password");
 
 
         if ((username.equals(adminName)) &&
