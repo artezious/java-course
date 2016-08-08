@@ -1,6 +1,9 @@
 package authSysTest;
 
+import authSysService.AdminMode;
 import authSysService.MainThread;
+import authSysService.UserMode;
+import authSysService.UserRole;
 import userBase.User;
 import userBase.UserDB;
 
@@ -17,6 +20,7 @@ public class Testing {
         Scanner scanner = new Scanner(System.in);
         MainThread mainThread = new MainThread();
         UserDB userDB = new UserDB();
+        UserRole userRole = UserRole.ANONYM;
 
         System.out.println("Enter amount of users");
         int userCount = scanner.nextInt();
@@ -33,5 +37,37 @@ public class Testing {
         }
 
         System.out.println(userDB);
+
+
+        System.out.println("DataBase ready. Do  you want to proceed to functionality? Y/N");
+        String choice = scanner.next();
+
+        switch (choice) {
+
+            case "Y":
+            case "y":
+
+                System.out.println("Enter username");
+                String username = scanner.next();
+                System.out.println("Enter password");
+                String password = scanner.next();
+
+                for (int i = 0; i < userDB.getUserDB().length; i++) {
+                    if (username.equals(userDB.getUserDB()[i].getUsername()) &&
+                            password.equals(userDB.getUserDB()[i].getPassword())) {
+                        userRole = userDB.getUserDB()[i].getUserRole();
+                        break;
+                    }
+                }
+                if (userRole.equals(UserRole.ADMIN)) {
+                    AdminMode.adminCommonMethod();
+                } else if (userRole.equals(UserRole.USER)) {
+                    UserMode.userCommonMethod();
+                }
+
+        }
     }
+
+
 }
+

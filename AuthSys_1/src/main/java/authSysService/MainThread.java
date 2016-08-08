@@ -42,18 +42,17 @@ public class MainThread {
         String userName = userProperty.getProperty("username");
         String userPassword = userProperty.getProperty("password");
 
-
         if ((username.equals(adminName)) &&
                 (password.equals(adminPassword))) {
             userRole = ADMIN;
         } else if ((username.equals(userName)) &&
                 (password.equals(userPassword))) {
             userRole = USER;
-        }
+        } else userRole = ANONYM;
+
         return userRole;
 
     }
-
 
 }
 

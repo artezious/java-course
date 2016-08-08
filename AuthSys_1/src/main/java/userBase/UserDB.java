@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class UserDB {
 
-    private User [] userDB = new User [0];
+    private User[] userDB = new User[0];
 
     public User[] getUserDB() {
         return userDB;
@@ -17,7 +17,7 @@ public class UserDB {
         this.userDB = userDB;
     }
 
-    public void addNewUser (User newUser) {
+    public void addNewUser(User newUser) {
 
         userDB = Arrays.copyOf(userDB, userDB.length + 1);
         userDB[userDB.length - 1] = newUser;
