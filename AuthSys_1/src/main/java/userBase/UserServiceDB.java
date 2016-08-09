@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * Created by WEO on 8/8/16.
  */
-public class UserDB {
+public class UserServiceDB extends User {
 
     private User[] userDB = new User[0];
     private UserRole userRole = UserRole.ANONYM;
@@ -37,24 +37,27 @@ public class UserDB {
             System.out.println("Enter password");
             String password = scanner.next();
 
-            User newUser = new User(username, password, mainThread.authCheck(username, password));
-            userDB = Arrays.copyOf(userDB, userDB.length + 1);
-            userDB[userDB.length - 1] = newUser;
+            if (username == null || password == null) {
+
+                throw new IllegalArgumentException("Credentials details shouldnt be null");
+
+            } else {
+                User newUser = new User(username, password, mainThread.authCheck(username, password));
+                userDB = Arrays.copyOf(userDB, userDB.length + 1);
+                userDB[userDB.length - 1] = newUser;
+            }
         }
-
-        System.out.println(userDB);
-
+        System.out.println(Arrays.toString(userDB));
     }
 
     public UserRole userSearch(String username, String password) {
 
-        getUserDB();
-        for (int i = 0; i < getUserDB().length; i++)
+        for (int i = 0; i < userDB.length; i++)
 
         {
-            if (username.equals(getUserDB()[i].getUsername()) &&
-                    password.equals(getUserDB()[i].getPassword())) {
-                userRole = getUserDB()[i].getUserRole();
+            if (username.equals(userDB[i].getUsername()) &&
+                    password.equals(userDB[i].getPassword())) {
+                userRole = userDB[i].getUserRole();
                 break;
             }
         }
@@ -64,7 +67,7 @@ public class UserDB {
 
     @Override
     public String toString() {
-        return "UserDB{" +
+        return "UserServiceDB{" +
                 "userDB=" + Arrays.toString(userDB) +
                 '}';
     }
