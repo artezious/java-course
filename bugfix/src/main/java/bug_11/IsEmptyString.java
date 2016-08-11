@@ -7,11 +7,9 @@ package bug_11;
  */
 public class IsEmptyString {
 
-    private static String CUSTOM_DEFAULT_VALUE;// not initialize it in declaration
+   final private static String CUSTOM_DEFAULT_VALUE;// not initialize it in declaration
 
     public static void main(String[] args) {
-
-        CUSTOM_DEFAULT_VALUE = "null";
 
         if (args[0].equals(CUSTOM_DEFAULT_VALUE)) {
             System.out.println("equals");

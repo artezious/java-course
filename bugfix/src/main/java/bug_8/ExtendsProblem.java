@@ -17,7 +17,7 @@ class A {
 
 class B extends A {
     public B() {
-        /*new A();*/
+        new A();
     }
 }
 
@@ -30,6 +30,6 @@ class C extends B {
 
 class D extends C {
     public D() {
-       /*new C();*/
+       new C();
     }
 }
