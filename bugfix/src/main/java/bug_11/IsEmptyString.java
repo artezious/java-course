@@ -5,16 +5,22 @@ package bug_11;
  *
  * remember for min changes
  */
-/*public class IsEmptyString {
+public class IsEmptyString {
 
-   final private static String CUSTOM_DEFAULT_VALUE;// not initialize it in declaration
+   final private String CUSTOM_DEFAULT_VALUE;// not initialize it in declaration
+
+    public IsEmptyString() {
+       CUSTOM_DEFAULT_VALUE = null;
+    }
 
     public static void main(String[] args) {
 
-        if (args[0].equals(CUSTOM_DEFAULT_VALUE)) {
+        IsEmptyString isEmptyString = new IsEmptyString();
+
+        if (args[0].equals(isEmptyString.CUSTOM_DEFAULT_VALUE)) {
             System.out.println("equals");
         } else {
             System.out.println("not equals");
         }
     }
-}*/
+}
