@@ -7,13 +7,13 @@ public class CacheProblem {
 
     public static void main(String[] args) {
         final CacheProblem cacheProblem = new CacheProblem();
-        cacheProblem.fullCacheInformation(cacheProblem.getCache());
+        cacheProblem.fullCacheInformation(cacheProblem);
         System.out.println(cacheProblem.cache.equals("cacheInfo"));//should be true, please provide few variants to fix this problem,
     }
 
 
-    public void fullCacheInformation(String cache) {
-        this.cache = "cacheInfo";
+    public void fullCacheInformation(CacheProblem cache) {
+         cache.setCache("cacheInfo");
     }
 
     public String getCache() {

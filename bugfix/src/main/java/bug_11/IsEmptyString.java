@@ -5,7 +5,7 @@ package bug_11;
  *
  * remember for min changes
  */
-public class IsEmptyString {
+/*public class IsEmptyString {
 
    final private static String CUSTOM_DEFAULT_VALUE;// not initialize it in declaration
 
@@ -17,4 +17,4 @@ public class IsEmptyString {
             System.out.println("not equals");
         }
     }
-}
+}*/
