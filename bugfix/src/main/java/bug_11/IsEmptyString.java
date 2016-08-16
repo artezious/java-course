@@ -10,7 +10,7 @@ public class IsEmptyString {
    final private String CUSTOM_DEFAULT_VALUE;// not initialize it in declaration
 
     public IsEmptyString() {
-       CUSTOM_DEFAULT_VALUE = null;
+       CUSTOM_DEFAULT_VALUE = "Tony Blare";
     }
 
     public static void main(String[] args) {
