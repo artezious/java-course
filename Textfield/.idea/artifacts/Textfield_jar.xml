@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Textfield:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Textfield_jar</output-path>
+    <root id="archive" name="Textfield_jar.jar">
+      <element id="archive" name="Textfield.jar">
+        <element id="module-output" name="Textfield" />
+      </element>
+      <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.6" />
+    </root>
+  </artifact>
+</component>
