@@ -8,13 +8,13 @@ import java.util.Scanner;
  */
 public class UserService {
 
-    private static UserObject[] userDB = new UserObject[0];
+    public static UserObject[] userDB = new UserObject[0];
 
     public static UserObject[] getUserDB() {
         return userDB;
     }
 
-    static void dbCreate(Scanner scanner) {
+    public static void dbCreate(Scanner scanner) {
 
         System.out.println("Enter amount of users");
         int useramount = scanner.nextInt();
@@ -38,22 +38,32 @@ public class UserService {
     }
 
     static void bossSearch(Scanner scanner) {
-        String[] bossArray = new String[0];
+        UserObject[] bossArray = new UserObject[0];
 
         System.out.println("Enter name for search");
         String username = scanner.next();
-        String usernameCheck = username;
 
         for (int i = 0; i < userDB.length; i++) {
 
-            if (userDB[i].getName().equals(usernameCheck)) {
+            if (userDB[i].getName().equals(username)) {
                 bossArray = Arrays.copyOf(bossArray, bossArray.length + 1);
-                bossArray[bossArray.length - 1] = userDB[i].getBoss();
-                usernameCheck = userDB[i].getBoss();
+                bossArray[bossArray.length - 1] = userDB[i];
+                username = userDB[i].getBoss();
             }
         }
 
         System.out.println(Arrays.toString(bossArray));
+
+
+    }
+
+    public static String recBossSearch(String username, int i) {
+        System.out.println(i + " i");
+        System.out.println(userDB.length);
+        if (i >= userDB.length) return null;
+        if (username.equals(userDB[i].getName())) return recBossSearch(userDB[i].getBoss(), ++i);
+        return recBossSearch(username, ++i);
+
     }
 
 

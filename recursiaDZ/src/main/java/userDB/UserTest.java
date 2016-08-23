@@ -13,7 +13,12 @@ public class UserTest {
 
         UserService.dbCreate(scanner);
 
-        UserService.bossSearch(scanner);
+     //   UserService.bossSearch(scanner);
+
+        System.out.println("Enter name for search");
+        String username = scanner.next();
+
+        System.out.println(UserService.recBossSearch(username,0));
     }
 
 }
