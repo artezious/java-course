@@ -18,7 +18,7 @@ public class UserTest {
         System.out.println("Enter name for search");
         String username = scanner.next();
 
-        System.out.println(UserService.recBossSearch(username,0));
+        UserService.recBossSearch(username,0);
     }
 
 }

@@ -54,18 +54,16 @@ public class UserService {
 
         System.out.println(Arrays.toString(bossArray));
 
-
     }
 
     public static String recBossSearch(String username, int i) {
-        System.out.println(i + " i");
-        System.out.println(userDB.length);
+
         if (i >= userDB.length) return null;
-        if (username.equals(userDB[i].getName())) return recBossSearch(userDB[i].getBoss(), ++i);
+        if (username.equals(userDB[i].getName())) {
+            System.out.print(userDB[i].getBoss() + " ");
+            return recBossSearch(userDB[i].getBoss(), ++i);
+        }
         return recBossSearch(username, ++i);
-
     }
-
-
 }
 
