@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AuthSys_1/AuthSys_1.iml" filepath="$PROJECT_DIR$/AuthSys_1/AuthSys_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/employeeDataBase/Empoyee.iml" filepath="$PROJECT_DIR$/employeeDataBase/Empoyee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InterFaceHW/InterfaceHW.iml" filepath="$PROJECT_DIR$/InterFaceHW/InterfaceHW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson11/Lesson11.iml" filepath="$PROJECT_DIR$/Lesson11/Lesson11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AuthenticationSystem/Lesson11HW.iml" filepath="$PROJECT_DIR$/AuthenticationSystem/Lesson11HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AuthSys_Natasha/Lesson12.iml" filepath="$PROJECT_DIR$/AuthSys_Natasha/Lesson12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson13/Lesson13.iml" filepath="$PROJECT_DIR$/Lesson13/Lesson13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson16/Lesson16.iml" filepath="$PROJECT_DIR$/lesson16/Lesson16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson2/Lesson2.iml" filepath="$PROJECT_DIR$/Lesson2/Lesson2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Encryption/Lesson2HW.iml" filepath="$PROJECT_DIR$/Encryption/Lesson2HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson3/Lesson3.iml" filepath="$PROJECT_DIR$/Lesson3/Lesson3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson3HW/Lesson3HW.iml" filepath="$PROJECT_DIR$/Lesson3HW/Lesson3HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson4/Lesson4.iml" filepath="$PROJECT_DIR$/Lesson4/Lesson4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson4HW/Lesson4HW.iml" filepath="$PROJECT_DIR$/Lesson4HW/Lesson4HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson5my/Lesson5.iml" filepath="$PROJECT_DIR$/Lesson5my/Lesson5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Calculator/Lesson5HW.iml" filepath="$PROJECT_DIR$/Calculator/Lesson5HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson6/Lesson6.iml" filepath="$PROJECT_DIR$/Lesson6/Lesson6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson7/Lesson7.iml" filepath="$PROJECT_DIR$/Lesson7/Lesson7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Family/Lesson7HW.iml" filepath="$PROJECT_DIR$/Family/Lesson7HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson8/Lesson8.iml" filepath="$PROJECT_DIR$/Lesson8/Lesson8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson9/Lesson9.iml" filepath="$PROJECT_DIR$/Lesson9/Lesson9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecursiaOfManagers/RecursiaOfManagers.iml" filepath="$PROJECT_DIR$/RecursiaOfManagers/RecursiaOfManagers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Textfield/Textfield.iml" filepath="$PROJECT_DIR$/Textfield/Textfield.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bugfix/bugfix.iml" filepath="$PROJECT_DIR$/bugfix/bugfix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson15/lesson15.iml" filepath="$PROJECT_DIR$/lesson15/lesson15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson18/lesson18.iml" filepath="$PROJECT_DIR$/lesson18/lesson18.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson19_Reflecsia/lesson19.iml" filepath="$PROJECT_DIR$/lesson19_Reflecsia/lesson19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson5/lesson5.iml" filepath="$PROJECT_DIR$/lesson5/lesson5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson7/lesson7/lesson7.iml" filepath="$PROJECT_DIR$/Lesson7/lesson7/lesson7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recursiaDZ/recursiaDZ.iml" filepath="$PROJECT_DIR$/recursiaDZ/recursiaDZ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backbone-spring-mvc-jpa/user.iml" filepath="$PROJECT_DIR$/backbone-spring-mvc-jpa/user.iml" />
+    </modules>
+  </component>
+</project>

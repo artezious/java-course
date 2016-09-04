@@ -7,6 +7,9 @@ import java.io.Serializable;
  */
 public class User implements Cloneable, Serializable {
 
+
+    private static final long serialVersionUID = 5738488721843388853L;
+
     private String name;
     private String surName;
     private Company company;
