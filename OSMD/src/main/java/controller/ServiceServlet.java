@@ -29,25 +29,22 @@ public class ServiceServlet extends HttpServlet{
         List<ServiceEntity> service = serviceDAO.getService();
         writer.write("<html>");
         writer.write("<body>");
-        writer.write("<table>");
+        writer.write("<table border='2'>");
 
         for (ServiceEntity services : service) {
-            writer.write("/tr");
+            writer.write("</tr>");
+                writer.write("<td>");
+                writer.write("" + services.getId());
+                writer.write("</td>");
 
-            writer.write("td");
-            writer.write("" + services.getId());
-            writer.write("/td");
+                writer.write("<td>");
+                writer.write(services.getServicename());
+                writer.write("</td>");
 
-            writer.write("td");
-            writer.write(services.getServicename());
-            writer.write("/td");
-
-         /*   writer.write("td");
-            writer.write(services.getTariff());
-            writer.write("/td");*/
-
-
-            writer.write("/tr");
+                writer.write("td");
+                writer.write(Double.toString(services.getTariff()));
+                writer.write("/td");
+            writer.write("</tr>");
         }
         writer.write("</table>");
         writer.write("</body>");

@@ -1,6 +1,8 @@
 package controller;
 
+import dao.StatementDAO;
 import dao.UserDAO;
+import model.StatementEntity;
 import model.UserEntity;
 
 import javax.servlet.ServletException;
@@ -14,37 +16,26 @@ import java.util.List;
 /**
  * Created by WEO on 9/12/16.
  */
-public class UserServlet extends HttpServlet{
-    private static final long serialVersionUID = -4027159295798624286L;
+public class StatementServlet extends HttpServlet{
+
+    private static final long serialVersionUID = 315308419458263751L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        UserDAO userDAO = new UserDAO();
-        List<UserEntity> users = userDAO.getUsers();
+        StatementDAO statementDAO = new StatementDAO();
+        List<StatementEntity> statements = statementDAO.getStatement();
         writer.write("<html>");
         writer.write("<body>");
         writer.write("<table border='2'>");
 
-        for (UserEntity user : users) {
+        for (StatementEntity statement : statements) {
             writer.write("<tr>");
                 writer.write("<td>");
-                writer.write("" + user.getId());
+                writer.write("" + statement.getId());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(user.getName());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getSurname());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getAddress());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getTelephone());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getEmail());
+                writer.write(Double.toString(statement.getDebt()));
                 writer.write("</td>");
             writer.write("</tr>");
         }

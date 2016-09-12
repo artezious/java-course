@@ -1,7 +1,7 @@
 package controller;
 
-import dao.UserDAO;
-import model.UserEntity;
+import dao.ConsumptionDAO;
+import model.ConsumptionEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,37 +14,35 @@ import java.util.List;
 /**
  * Created by WEO on 9/12/16.
  */
-public class UserServlet extends HttpServlet{
-    private static final long serialVersionUID = -4027159295798624286L;
+public class ConsumptionServlet extends HttpServlet{
+
+    private static final long serialVersionUID = 283048943694953214L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        UserDAO userDAO = new UserDAO();
-        List<UserEntity> users = userDAO.getUsers();
+        ConsumptionDAO consumptionDAO = new ConsumptionDAO();
+        List<ConsumptionEntity> consumptions = consumptionDAO.getUsers();
         writer.write("<html>");
         writer.write("<body>");
         writer.write("<table border='2'>");
 
-        for (UserEntity user : users) {
+        for (ConsumptionEntity consumption : consumptions) {
             writer.write("<tr>");
                 writer.write("<td>");
-                writer.write("" + user.getId());
+                writer.write("" + consumption.getId());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(user.getName());
+                writer.write(consumption.getLv());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(user.getSurname());
+                writer.write(consumption.getRtv());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(user.getAddress());
+                writer.write(consumption.getConsumed());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(user.getTelephone());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getEmail());
+                writer.write(consumption.getTotalConsumed());
                 writer.write("</td>");
             writer.write("</tr>");
         }

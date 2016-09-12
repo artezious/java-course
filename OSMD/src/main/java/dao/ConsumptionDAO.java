@@ -1,6 +1,6 @@
 package dao;
 
-import model.ServiceEntity;
+import model.ConsumptionEntity;
 import model.UserEntity;
 
 import javax.persistence.EntityManager;
@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Created by WEO on 9/12/16.
  */
-public class ServiceDAO {
+public class ConsumptionDAO {
     private final EntityManager entityManager = Persistence.createEntityManagerFactory("osmdPersistenceUnit").createEntityManager();
-    public List<ServiceEntity> getService() {
-        return entityManager.createQuery("Select Service from ServiceEntity service").getResultList();
+    public List<ConsumptionEntity> getUsers() {
+        return entityManager.createQuery("Select Consumption from ConsumptionEntity consumption").getResultList();
     }
 }

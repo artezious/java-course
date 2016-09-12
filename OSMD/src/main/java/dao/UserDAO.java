@@ -10,7 +10,7 @@ import java.util.List;
  * Created by WEO on 9/12/16.
  */
 public class UserDAO {
-    private final EntityManager entityManager = Persistence.createEntityManagerFactory("persistence.xml").createEntityManager();
+    private final EntityManager entityManager = Persistence.createEntityManagerFactory("osmdPersistenceUnit").createEntityManager();
     public List<UserEntity> getUsers() {
         return entityManager.createQuery("Select User from UserEntity user").getResultList();
     }
