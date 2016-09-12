@@ -31,8 +31,19 @@ public class ServiceServlet extends HttpServlet{
         writer.write("<body>");
         writer.write("<table border='2'>");
 
+        writer.write("<tr>");
+            writer.write("<td");
+            writer.write("Id");
+            writer.write("</td>");
+            writer.write("<td");
+            writer.write("ServiceName");
+            writer.write("</td>");
+            writer.write("<td");
+            writer.write("Tariff");
+            writer.write("</td>");
+        writer.write("</tr>");
         for (ServiceEntity services : service) {
-            writer.write("</tr>");
+            writer.write("<tr>");
                 writer.write("<td>");
                 writer.write("" + services.getId());
                 writer.write("</td>");
@@ -41,9 +52,9 @@ public class ServiceServlet extends HttpServlet{
                 writer.write(services.getServicename());
                 writer.write("</td>");
 
-                writer.write("td");
+                writer.write("<td>");
                 writer.write(Double.toString(services.getTariff()));
-                writer.write("/td");
+                writer.write("</td>");
             writer.write("</tr>");
         }
         writer.write("</table>");
