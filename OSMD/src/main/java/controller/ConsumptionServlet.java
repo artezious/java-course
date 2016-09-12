@@ -23,9 +23,13 @@ public class ConsumptionServlet extends HttpServlet{
         PrintWriter writer = resp.getWriter();
         ConsumptionDAO consumptionDAO = new ConsumptionDAO();
         List<ConsumptionEntity> consumptions = consumptionDAO.getUsers();
+
         writer.write("<html>");
         writer.write("<body>");
+        writer.write("<!DOCTYPE>");
         writer.write("<table border='2'>");
+
+       /* writer.print(consumptions);*/
 
         for (ConsumptionEntity consumption : consumptions) {
             writer.write("<tr>");
@@ -33,16 +37,16 @@ public class ConsumptionServlet extends HttpServlet{
                 writer.write("" + consumption.getId());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(consumption.getLv());
+                writer.write("" + consumption.getLv());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(consumption.getRtv());
+                writer.write("" + consumption.getRtv());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(consumption.getConsumed());
+                writer.write("" + consumption.getConsumed());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(consumption.getTotalConsumed());
+                writer.write("" + consumption.getTotalConsumed());
                 writer.write("</td>");
             writer.write("</tr>");
         }

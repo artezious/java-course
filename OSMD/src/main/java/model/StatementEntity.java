@@ -50,4 +50,12 @@ public class StatementEntity {
         result = 31 * result + (debt != null ? debt.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "StatementEntity{" +
+                "id=" + id +
+                ", debt=" + debt +
+                '}';
+    }
 }

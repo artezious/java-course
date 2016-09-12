@@ -90,4 +90,15 @@ public class ConsumptionEntity {
         result = 31 * result + (totalConsumed != null ? totalConsumed.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "ConsumptionEntity{" +
+                "id=" + id +
+                ", lv=" + lv +
+                ", rtv=" + rtv +
+                ", consumed=" + consumed +
+                ", totalConsumed=" + totalConsumed +
+                '}';
+    }
 }

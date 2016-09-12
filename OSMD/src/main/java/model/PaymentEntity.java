@@ -64,4 +64,13 @@ public class PaymentEntity {
         result = 31 * result + (paymentDate != null ? paymentDate.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "PaymentEntity{" +
+                "id=" + id +
+                ", paid=" + paid +
+                ", paymentDate=" + paymentDate +
+                '}';
+    }
 }
