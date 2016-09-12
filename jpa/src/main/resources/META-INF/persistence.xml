@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit"/>
+    <persistence-unit name="userPersistenceUnit">
+        <class>jpa.model.UserEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:h2:file:/Users/WEO/Desktop/test_db"/>
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.username" value=""/>
+            <property name="hibernate.connection.password" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>
