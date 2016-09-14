@@ -15,6 +15,17 @@ public class ServiceEntity {
     private String servicename;
     private double tariff;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "SERVICE")
+    private Set <ConsumptionEntity> consumptionEntities;
+
+    public Set<ConsumptionEntity> getConsumptionEntities() {
+        return consumptionEntities;
+    }
+
+    public void setConsumptionEntities(Set<ConsumptionEntity> consumptionEntities) {
+        this.consumptionEntities = consumptionEntities;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
@@ -26,6 +37,7 @@ public class ServiceEntity {
     public void setId(int id) {
         this.id = id;
     }
+
 
     @Basic
     @Column(name = "SERVICENAME", nullable = false, length = 30)
@@ -47,17 +59,6 @@ public class ServiceEntity {
         this.tariff = tariff;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "serviceEntities")
-    public List<ConsumptionEntity> consumptionEntityList;
-
-    public List<ConsumptionEntity> getConsumptionEntityList() {
-        return consumptionEntityList;
-    }
-
-    public void setConsumptionEntityList(List<ConsumptionEntity> consumptionEntityList) {
-        this.consumptionEntityList = consumptionEntityList;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,7 +69,7 @@ public class ServiceEntity {
         if (id != that.id) return false;
         if (Double.compare(that.tariff, tariff) != 0) return false;
         if (servicename != null ? !servicename.equals(that.servicename) : that.servicename != null) return false;
-        return consumptionEntityList != null ? consumptionEntityList.equals(that.consumptionEntityList) : that.consumptionEntityList == null;
+        return consumptionEntities != null ? consumptionEntities.equals(that.consumptionEntities) : that.consumptionEntities == null;
 
     }
 
@@ -80,7 +81,7 @@ public class ServiceEntity {
         result = 31 * result + (servicename != null ? servicename.hashCode() : 0);
         temp = Double.doubleToLongBits(tariff);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (consumptionEntityList != null ? consumptionEntityList.hashCode() : 0);
+        result = 31 * result + (consumptionEntities != null ? consumptionEntities.hashCode() : 0);
         return result;
     }
 
@@ -90,8 +91,7 @@ public class ServiceEntity {
                 "id=" + id +
                 ", servicename='" + servicename + '\'' +
                 ", tariff=" + tariff +
-                ", consumptionEntityList=" + consumptionEntityList +
+                ", consumptionEntities=" + consumptionEntities +
                 '}';
     }
-
 }

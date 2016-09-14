@@ -16,9 +16,9 @@ public class ConsumptionEntity {
     private Integer totalConsumed;
     private ServiceEntity serviceEntities;
 
-    @ManyToOne(optional = false)
-    @JoinTable(name = "SERVICE")
-    @JoinColumn(name = "SERVICE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SERVICE_ID", nullable = false)
+
     public ServiceEntity getServiceEntities() {
         return serviceEntities;
     }
@@ -26,6 +26,7 @@ public class ConsumptionEntity {
     public void setServiceEntities(ServiceEntity serviceEntities) {
         this.serviceEntities = serviceEntities;
     }
+
 
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -76,6 +77,19 @@ public class ConsumptionEntity {
 
     public void setTotalConsumed(Integer totalConsumed) {
         this.totalConsumed = totalConsumed;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ConsumptionEntity{" +
+                "id=" + id +
+                ", lv=" + lv +
+                ", rtv=" + rtv +
+                ", consumed=" + consumed +
+                ", totalConsumed=" + totalConsumed +
+                ", serviceEntities=" + serviceEntities +
+                '}';
     }
 
     @Override
