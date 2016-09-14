@@ -15,7 +15,7 @@ public class ServiceEntity {
     private String servicename;
     private double tariff;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "SERVICE")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "serviceEntities")
     private Set <ConsumptionEntity> consumptionEntities;
 
     public Set<ConsumptionEntity> getConsumptionEntities() {
