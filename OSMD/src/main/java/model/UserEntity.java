@@ -16,6 +16,7 @@ public class UserEntity {
     private String email;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     public int getId() {
         return id;

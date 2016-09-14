@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by WEO on 9/12/16.
@@ -13,8 +14,21 @@ public class ConsumptionEntity {
     private Integer rtv;
     private Integer consumed;
     private Integer totalConsumed;
+    private ServiceEntity serviceEntities;
+
+    @ManyToOne(optional = false)
+    @JoinTable(name = "SERVICE")
+    @JoinColumn(name = "SERVICE_ID")
+    public ServiceEntity getServiceEntities() {
+        return serviceEntities;
+    }
+
+    public void setServiceEntities(ServiceEntity serviceEntities) {
+        this.serviceEntities = serviceEntities;
+    }
 
     @Id
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     public int getId() {
         return id;
@@ -67,7 +81,7 @@ public class ConsumptionEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof ConsumptionEntity)) return false;
 
         ConsumptionEntity that = (ConsumptionEntity) o;
 
@@ -77,8 +91,8 @@ public class ConsumptionEntity {
         if (consumed != null ? !consumed.equals(that.consumed) : that.consumed != null) return false;
         if (totalConsumed != null ? !totalConsumed.equals(that.totalConsumed) : that.totalConsumed != null)
             return false;
+        return serviceEntities != null ? serviceEntities.equals(that.serviceEntities) : that.serviceEntities == null;
 
-        return true;
     }
 
     @Override
@@ -88,17 +102,7 @@ public class ConsumptionEntity {
         result = 31 * result + (rtv != null ? rtv.hashCode() : 0);
         result = 31 * result + (consumed != null ? consumed.hashCode() : 0);
         result = 31 * result + (totalConsumed != null ? totalConsumed.hashCode() : 0);
+        result = 31 * result + (serviceEntities != null ? serviceEntities.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ConsumptionEntity{" +
-                "id=" + id +
-                ", lv=" + lv +
-                ", rtv=" + rtv +
-                ", consumed=" + consumed +
-                ", totalConsumed=" + totalConsumed +
-                '}';
     }
 }
