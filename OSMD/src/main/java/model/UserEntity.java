@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by WEO on 9/12/16.
@@ -14,6 +16,20 @@ public class UserEntity {
     private String address;
     private String telephone;
     private String email;
+    private Set<StatementEntity> statementEntity;
+
+    public UserEntity() {
+    }
+
+    @OneToMany(mappedBy = "userEntity")
+    public Set<StatementEntity> getStatementEntity() {
+        return statementEntity;
+    }
+
+    public void setStatementEntity(Set<StatementEntity> statementEntity) {
+        this.statementEntity = statementEntity;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,7 +95,7 @@ public class UserEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof UserEntity)) return false;
 
         UserEntity that = (UserEntity) o;
 
@@ -89,8 +105,8 @@ public class UserEntity {
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        return statementEntity != null ? statementEntity.equals(that.statementEntity) : that.statementEntity == null;
 
-        return true;
     }
 
     @Override
@@ -101,6 +117,7 @@ public class UserEntity {
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (statementEntity != null ? statementEntity.hashCode() : 0);
         return result;
     }
 
@@ -113,6 +130,7 @@ public class UserEntity {
                 ", address='" + address + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
+                ", statementEntity=" + statementEntity +
                 '}';
     }
 }

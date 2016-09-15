@@ -49,7 +49,7 @@ public class ConsumptionServlet extends HttpServlet{
                 writer.write("" + consumption.getTotalConsumed());
                 writer.write("</td>");
                 writer.write("<td>");
-                writer.write(consumption.getServiceEntities().getServicename());
+                writer.write(consumption.getServiceEntity().getServicename());
                 writer.write("</td>");
             writer.write("</tr>");
         }

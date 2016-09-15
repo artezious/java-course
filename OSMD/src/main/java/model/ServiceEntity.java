@@ -1,8 +1,7 @@
 package model;
 
 import javax.persistence.*;
-import javax.persistence.criteria.Order;
-import java.util.List;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -14,10 +13,12 @@ public class ServiceEntity {
     private int id;
     private String servicename;
     private double tariff;
+    private Set<ConsumptionEntity> consumptionEntities;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "serviceEntities")
-    private Set <ConsumptionEntity> consumptionEntities;
+    public ServiceEntity() {
+    }
 
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
     public Set<ConsumptionEntity> getConsumptionEntities() {
         return consumptionEntities;
     }

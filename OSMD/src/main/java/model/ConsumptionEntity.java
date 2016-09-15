@@ -1,7 +1,8 @@
 package model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by WEO on 9/12/16.
@@ -14,19 +15,25 @@ public class ConsumptionEntity {
     private Integer rtv;
     private Integer consumed;
     private Integer totalConsumed;
-    private ServiceEntity serviceEntities;
+    private ServiceEntity serviceEntity;
+    private Set<PaymentEntity> paymentEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SERVICE_ID", nullable = false)
-
-    public ServiceEntity getServiceEntities() {
-        return serviceEntities;
+    public ConsumptionEntity() {
     }
 
-    public void setServiceEntities(ServiceEntity serviceEntities) {
-        this.serviceEntities = serviceEntities;
+    @OneToMany(mappedBy = "consumptionEntity")
+    public Set<PaymentEntity> getPaymentEntity() {
+        return paymentEntity;
     }
 
+    public void setPaymentEntity(Set<PaymentEntity> paymentEntity) {
+        this.paymentEntity = paymentEntity;
+    }
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Service_ID")
+    public ServiceEntity getServiceEntity() { return serviceEntity;  }
+    public void setServiceEntity(ServiceEntity serviceEntities) { this.serviceEntity = serviceEntities; }
 
     @Id
     @GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -81,18 +88,6 @@ public class ConsumptionEntity {
 
 
     @Override
-    public String toString() {
-        return "ConsumptionEntity{" +
-                "id=" + id +
-                ", lv=" + lv +
-                ", rtv=" + rtv +
-                ", consumed=" + consumed +
-                ", totalConsumed=" + totalConsumed +
-                ", serviceEntities=" + serviceEntities +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ConsumptionEntity)) return false;
@@ -105,7 +100,9 @@ public class ConsumptionEntity {
         if (consumed != null ? !consumed.equals(that.consumed) : that.consumed != null) return false;
         if (totalConsumed != null ? !totalConsumed.equals(that.totalConsumed) : that.totalConsumed != null)
             return false;
-        return serviceEntities != null ? serviceEntities.equals(that.serviceEntities) : that.serviceEntities == null;
+        if (serviceEntity != null ? !serviceEntity.equals(that.serviceEntity) : that.serviceEntity != null)
+            return false;
+        return paymentEntity != null ? paymentEntity.equals(that.paymentEntity) : that.paymentEntity == null;
 
     }
 
@@ -116,7 +113,21 @@ public class ConsumptionEntity {
         result = 31 * result + (rtv != null ? rtv.hashCode() : 0);
         result = 31 * result + (consumed != null ? consumed.hashCode() : 0);
         result = 31 * result + (totalConsumed != null ? totalConsumed.hashCode() : 0);
-        result = 31 * result + (serviceEntities != null ? serviceEntities.hashCode() : 0);
+        result = 31 * result + (serviceEntity != null ? serviceEntity.hashCode() : 0);
+        result = 31 * result + (paymentEntity != null ? paymentEntity.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ConsumptionEntity{" +
+                "id=" + id +
+                ", lv=" + lv +
+                ", rtv=" + rtv +
+                ", consumed=" + consumed +
+                ", totalConsumed=" + totalConsumed +
+                ", serviceEntity=" + serviceEntity +
+                ", paymentEntity=" + paymentEntity +
+                '}';
     }
 }

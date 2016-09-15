@@ -37,6 +37,12 @@ public class StatementServlet extends HttpServlet{
                 writer.write("<td>");
                 writer.write(Double.toString(statement.getDebt()));
                 writer.write("</td>");
+                writer.write("<td>");
+                writer.write("" + statement.getUserEntity().getId());
+                writer.write("</td>");
+                writer.write("<td>");
+                writer.write("" + statement.getPaymentEntity().getId());
+                writer.write("</td>");
             writer.write("</tr>");
         }
         writer.write("</table>");

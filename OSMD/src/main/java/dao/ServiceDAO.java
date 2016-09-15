@@ -1,7 +1,6 @@
 package dao;
 
 import model.ServiceEntity;
-import model.UserEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

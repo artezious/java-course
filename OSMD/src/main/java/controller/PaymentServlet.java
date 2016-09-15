@@ -1,9 +1,7 @@
 package controller;
 
 import dao.PaymentDAO;
-import dao.UserDAO;
 import model.PaymentEntity;
-import model.UserEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +41,12 @@ public class PaymentServlet extends HttpServlet{
                 writer.write("<td>");
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 writer.write(dateFormat.format(payment.getPaymentDate()));
+                writer.write("</td>");
+                writer.write("<td>");
+                writer.write("" + payment.getConsumptionEntity().getId());
+                writer.write("</td>");
+                writer.write("<td>");
+                writer.write("" + payment.getConsumptionEntity().getServiceEntity().getServicename());
                 writer.write("</td>");
             writer.write("</tr>");
         }
