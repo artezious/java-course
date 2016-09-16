@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -18,7 +17,7 @@ public class ServiceEntity {
     public ServiceEntity() {
     }
 
-    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "serviceEntity", cascade = CascadeType.ALL)
     public Set<ConsumptionEntity> getConsumptionEntities() {
         return consumptionEntities;
     }

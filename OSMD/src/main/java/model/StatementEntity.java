@@ -27,7 +27,7 @@ public class StatementEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Paymen_ID")
+    @JoinColumn(name = "Payment_ID")
     public PaymentEntity getPaymentEntity() {
         return paymentEntity;
     }
