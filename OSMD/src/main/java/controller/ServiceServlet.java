@@ -1,9 +1,7 @@
 package controller;
 
 import dao.ServiceDAO;
-import dao.UserDAO;
 import model.ServiceEntity;
-import model.UserEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +11,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import static java.lang.Math.round;
-
 /**
  * Created by WEO on 9/12/16.
  */
+
 public class ServiceServlet extends HttpServlet{
 
     private static final long serialVersionUID = -6633624261456160067L;
@@ -27,6 +24,8 @@ public class ServiceServlet extends HttpServlet{
         PrintWriter writer = resp.getWriter();
         ServiceDAO serviceDAO = new ServiceDAO();
         List<ServiceEntity> service = serviceDAO.getService();
+
+        writer.write("<!DOCTYPE html>");
         writer.write("<html>");
         writer.write("<body>");
         writer.write("<table border='2'>");

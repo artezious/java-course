@@ -1,15 +1,18 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by WEO on 9/12/16.
  */
+
 @Entity
 @Table(name = "CONSUMPTION", schema = "PUBLIC", catalog = "DATABASES")
-public class ConsumptionEntity {
+public class ConsumptionEntity implements Serializable {
+
+    private static final long serialVersionUID = 6141871642725084470L;
     private int id;
     private Integer lv;
     private Integer rtv;
@@ -32,11 +35,16 @@ public class ConsumptionEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Service_ID")
-    public ServiceEntity getServiceEntity() { return serviceEntity;  }
-    public void setServiceEntity(ServiceEntity serviceEntities) { this.serviceEntity = serviceEntities; }
+    public ServiceEntity getServiceEntity() {
+        return serviceEntity;
+    }
+
+    public void setServiceEntity(ServiceEntity serviceEntities) {
+        this.serviceEntity = serviceEntities;
+    }
 
     @Id
-    @GeneratedValue (strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     public int getId() {
         return id;
@@ -88,6 +96,19 @@ public class ConsumptionEntity {
 
 
     @Override
+    public String toString() {
+        return "ConsumptionEntity{" +
+                "id=" + id +
+                ", lv=" + lv +
+                ", rtv=" + rtv +
+                ", consumed=" + consumed +
+                ", totalConsumed=" + totalConsumed +
+                ", serviceEntity=" + serviceEntity +
+                ", paymentEntity=" + paymentEntity +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ConsumptionEntity)) return false;
@@ -113,21 +134,8 @@ public class ConsumptionEntity {
         result = 31 * result + (rtv != null ? rtv.hashCode() : 0);
         result = 31 * result + (consumed != null ? consumed.hashCode() : 0);
         result = 31 * result + (totalConsumed != null ? totalConsumed.hashCode() : 0);
-        result = 31 * result + (serviceEntity != null ? serviceEntity.hashCode() : 0);
-        result = 31 * result + (paymentEntity != null ? paymentEntity.hashCode() : 0);
+        //     result = 31 * result + (serviceEntity != null ? serviceEntity.hashCode() : 0);
+        //     result = 31 * result + (paymentEntity != null ? paymentEntity.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ConsumptionEntity{" +
-                "id=" + id +
-                ", lv=" + lv +
-                ", rtv=" + rtv +
-                ", consumed=" + consumed +
-                ", totalConsumed=" + totalConsumed +
-                ", serviceEntity=" + serviceEntity +
-                ", paymentEntity=" + paymentEntity +
-                '}';
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * Created by WEO on 9/12/16.
  */
+
 public class PaymentServlet extends HttpServlet{
 
 
@@ -26,6 +27,8 @@ public class PaymentServlet extends HttpServlet{
         PrintWriter writer = resp.getWriter();
         PaymentDAO paymentDAO = new PaymentDAO();
         List<PaymentEntity> payments = paymentDAO.getPayment();
+
+        writer.write("<!DOCTYPE html>");
         writer.write("<html>");
         writer.write("<body>");
         writer.write("<table border='2'>");

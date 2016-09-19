@@ -1,13 +1,17 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by WEO on 9/12/16.
  */
+
 @Entity
 @Table(name = "STATEMENT", schema = "PUBLIC", catalog = "DATABASES")
-public class StatementEntity {
+public class StatementEntity implements Serializable {
+
+    private static final long serialVersionUID = 3162663495332691934L;
     private int id;
     private Double debt;
     private PaymentEntity paymentEntity;
@@ -59,6 +63,16 @@ public class StatementEntity {
     }
 
     @Override
+    public String toString() {
+        return "StatementEntity{" +
+                "id=" + id +
+                ", debt=" + debt +
+                ", paymentEntity=" + paymentEntity +
+                ", userEntity=" + userEntity +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof StatementEntity)) return false;
@@ -77,18 +91,8 @@ public class StatementEntity {
     public int hashCode() {
         int result = id;
         result = 31 * result + (debt != null ? debt.hashCode() : 0);
-        result = 31 * result + (paymentEntity != null ? paymentEntity.hashCode() : 0);
-        result = 31 * result + (userEntity != null ? userEntity.hashCode() : 0);
+        //      result = 31 * result + (paymentEntity != null ? paymentEntity.hashCode() : 0);
+        //      result = 31 * result + (userEntity != null ? userEntity.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "StatementEntity{" +
-                "id=" + id +
-                ", debt=" + debt +
-                ", paymentEntity=" + paymentEntity +
-                ", userEntity=" + userEntity +
-                '}';
     }
 }

@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by WEO on 9/12/16.
  */
+
 public class UserServlet extends HttpServlet{
     private static final long serialVersionUID = -4027159295798624286L;
 
@@ -22,6 +23,8 @@ public class UserServlet extends HttpServlet{
         PrintWriter writer = resp.getWriter();
         UserDAO userDAO = new UserDAO();
         List<UserEntity> users = userDAO.getUsers();
+
+        writer.write("<!DOCTYPE html>");
         writer.write("<html>");
         writer.write("<body>");
         writer.write("<table border='2'>");

@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by WEO on 9/12/16.
  */
+
 public class ConsumptionServlet extends HttpServlet{
 
     private static final long serialVersionUID = 283048943694953214L;
@@ -22,14 +23,13 @@ public class ConsumptionServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
         ConsumptionDAO consumptionDAO = new ConsumptionDAO();
-        List<ConsumptionEntity> consumptions = consumptionDAO.getUsers();
+        List<ConsumptionEntity> consumptions = consumptionDAO.getConsumptions();
 
+        writer.write("<!DOCTYPE html>");
         writer.write("<html>");
         writer.write("<body>");
-        writer.write("<!DOCTYPE>");
         writer.write("<table border='2'>");
 
-       /* writer.print(consumptions);*/
 
         for (ConsumptionEntity consumption : consumptions) {
             writer.write("<tr>");

@@ -1,15 +1,18 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by WEO on 9/12/16.
  */
+
 @Entity
 @Table(name = "USER", schema = "PUBLIC", catalog = "DATABASES")
-public class UserEntity {
+public class UserEntity implements Serializable {
+
+    private static final long serialVersionUID = -278687281884895116L;
     private int id;
     private String name;
     private String surname;
@@ -93,6 +96,19 @@ public class UserEntity {
     }
 
     @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address='" + address + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", statementEntity=" + statementEntity +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserEntity)) return false;
@@ -117,20 +133,7 @@ public class UserEntity {
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (statementEntity != null ? statementEntity.hashCode() : 0);
+//        result = 31 * result + (statementEntity != null ? statementEntity.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", address='" + address + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", email='" + email + '\'' +
-                ", statementEntity=" + statementEntity +
-                '}';
     }
 }

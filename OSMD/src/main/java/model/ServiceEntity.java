@@ -1,14 +1,18 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by WEO on 9/12/16.
  */
+
 @Entity
 @Table(name = "SERVICE", schema = "PUBLIC", catalog = "DATABASES")
-public class ServiceEntity {
+public class ServiceEntity implements Serializable {
+
+    private static final long serialVersionUID = -7554164565613278171L;
     private int id;
     private String servicename;
     private double tariff;
@@ -60,6 +64,16 @@ public class ServiceEntity {
     }
 
     @Override
+    public String toString() {
+        return "ServiceEntity{" +
+                "id=" + id +
+                ", servicename='" + servicename + '\'' +
+                ", tariff=" + tariff +
+                ", consumptionEntities=" + consumptionEntities +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ServiceEntity)) return false;
@@ -81,17 +95,7 @@ public class ServiceEntity {
         result = 31 * result + (servicename != null ? servicename.hashCode() : 0);
         temp = Double.doubleToLongBits(tariff);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (consumptionEntities != null ? consumptionEntities.hashCode() : 0);
+        //  result = 31 * result + (consumptionEntities != null ? consumptionEntities.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ServiceEntity{" +
-                "id=" + id +
-                ", servicename='" + servicename + '\'' +
-                ", tariff=" + tariff +
-                ", consumptionEntities=" + consumptionEntities +
-                '}';
     }
 }

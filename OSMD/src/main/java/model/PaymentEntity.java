@@ -1,16 +1,19 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
-import java.util.Collection;
 import java.util.Set;
 
 /**
  * Created by WEO on 9/12/16.
  */
+
 @Entity
 @Table(name = "PAYMENT", schema = "PUBLIC", catalog = "DATABASES")
-public class PaymentEntity {
+public class PaymentEntity implements Serializable {
+
+    private static final long serialVersionUID = -198030189311564206L;
     private int id;
     private Double paid;
     private Date paymentDate;
@@ -91,8 +94,8 @@ public class PaymentEntity {
         int result = id;
         result = 31 * result + (paid != null ? paid.hashCode() : 0);
         result = 31 * result + (paymentDate != null ? paymentDate.hashCode() : 0);
-        result = 31 * result + (consumptionEntity != null ? consumptionEntity.hashCode() : 0);
-        result = 31 * result + (statementEntity != null ? statementEntity.hashCode() : 0);
+//        result = 31 * result + (consumptionEntity != null ? consumptionEntity.hashCode() : 0);
+//        result = 31 * result + (statementEntity != null ? statementEntity.hashCode() : 0);
         return result;
     }
 

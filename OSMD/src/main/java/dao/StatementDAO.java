@@ -3,15 +3,26 @@ package dao;
 import model.StatementEntity;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import java.util.List;
+
+import static dao.Singleton.ENTITY_MANAGER;
 
 /**
  * Created by WEO on 9/12/16.
  */
+
 public class StatementDAO {
-    private final EntityManager entityManager = Persistence.createEntityManagerFactory("osmdPersistenceUnit").createEntityManager();
+
+    EntityManager entityManager = ENTITY_MANAGER.getEntityManager();
+
     public List<StatementEntity> getStatement() {
         return entityManager.createQuery("Select Statement from StatementEntity statement").getResultList();
     }
+
+    public void saveStatement(StatementEntity entity) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(entity);
+        entityManager.getTransaction().commit();
+    }
+
 }
