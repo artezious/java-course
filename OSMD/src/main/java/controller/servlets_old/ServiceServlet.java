@@ -1,7 +1,7 @@
-package controller;
+package controller.servlets_old;
 
-import dao.UserDAO;
-import model.UserEntity;
+import dao.ServiceDAO;
+import model.ServiceEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,39 +15,44 @@ import java.util.List;
  * Created by WEO on 9/12/16.
  */
 
-public class UserServlet extends HttpServlet{
-    private static final long serialVersionUID = -4027159295798624286L;
+public class ServiceServlet extends HttpServlet{
+
+    private static final long serialVersionUID = -6633624261456160067L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        UserDAO userDAO = new UserDAO();
-        List<UserEntity> users = userDAO.getUsers();
+        ServiceDAO serviceDAO = new ServiceDAO();
+        List<ServiceEntity> service = serviceDAO.getService();
 
         writer.write("<!DOCTYPE html>");
         writer.write("<html>");
         writer.write("<body>");
         writer.write("<table border='2'>");
 
-        for (UserEntity user : users) {
+        writer.write("<tr>");
+            writer.write("<td");
+            writer.write("Id");
+            writer.write("</td>");
+            writer.write("<td");
+            writer.write("ServiceName");
+            writer.write("</td>");
+            writer.write("<td");
+            writer.write("Tariff");
+            writer.write("</td>");
+        writer.write("</tr>");
+        for (ServiceEntity services : service) {
             writer.write("<tr>");
                 writer.write("<td>");
-                writer.write("" + user.getId());
+                writer.write("" + services.getId());
                 writer.write("</td>");
+
                 writer.write("<td>");
-                writer.write(user.getName());
+                writer.write(services.getServicename());
                 writer.write("</td>");
+
                 writer.write("<td>");
-                writer.write(user.getSurname());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getAddress());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getTelephone());
-                writer.write("</td>");
-                writer.write("<td>");
-                writer.write(user.getEmail());
+                writer.write(Double.toString(services.getTariff()));
                 writer.write("</td>");
             writer.write("</tr>");
         }

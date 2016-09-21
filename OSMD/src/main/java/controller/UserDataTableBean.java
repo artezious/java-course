@@ -113,4 +113,6 @@ public class UserDataTableBean implements Serializable {
     public void setDetailsHidden(boolean detailsHidden) {
         this.detailsHidden = detailsHidden;
     }
+
+
 }
