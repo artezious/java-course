@@ -1,27 +1,24 @@
 package controller;
 
-import dao.UserDAO;
-import model.UserEntity;
 import org.icefaces.ace.component.datatable.DataTable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.CustomScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by WEO on 9/21/16.
  */
 
-@ManagedBean(name = DataTableFind.BEAN_NAME)
+@ManagedBean(name = DataTableSearchBean.BEAN_NAME)
 @CustomScoped(value = "#{window}")
-public class DataTableFind implements Serializable {
+public class DataTableSearchBean implements Serializable {
 
-    public static final String BEAN_NAME = "userDataTableFind";
+    public static final String BEAN_NAME = "dataTableSearchBean";
     public final SelectItem[] SEARCH_MODES = {new SelectItem("startsWith", "Starts With"),
             new SelectItem("endsWith", "Ends With"),
             new SelectItem("contains", "Contains"),
@@ -40,12 +37,59 @@ public class DataTableFind implements Serializable {
     public String searchQuery = "";
     public String[] selectedColumns = new String[]{"id", "name", "surname", "address", "telephone", "email", "mpg", "cost"};
     public int lastFoundIndex = -1;
+    @ManagedProperty(value = "#{userDataTableBean}")
+    private UserDataTableBean userDataTableBean;
+    @ManagedProperty(value = "#{serviceDataTableBean}")
+    private ServiceDataTableBean serviceDataTableBean;
+    @ManagedProperty(value = "#{paymentDataTableBean}")
+    private PaymentDataTableBean paymentDataTableBean;
+    @ManagedProperty(value = "#{consumptionDataTableBean}")
+    private ConsumptionDataTableBean consumptionDataTableBean;
+    @ManagedProperty(value = "#{statementDataTableBean}")
+    private StatementDataTableBean statementDataTableBean;
     private boolean caseSensitive;
-    private List<UserEntity> userEntities = new ArrayList<UserEntity>();
-    private UserDAO userDao = new UserDAO();
 
-    public DataTableFind() {
-        userEntities = userDao.getUsers();
+    public DataTableSearchBean() {
+    }
+
+    public UserDataTableBean getUserDataTableBean() {
+        return userDataTableBean;
+    }
+
+    public void setUserDataTableBean(UserDataTableBean userDataTableBean) {
+        this.userDataTableBean = userDataTableBean;
+    }
+
+    public ServiceDataTableBean getServiceDataTableBean() {
+        return serviceDataTableBean;
+    }
+
+    public void setServiceDataTableBean(ServiceDataTableBean serviceDataTableBean) {
+        this.serviceDataTableBean = serviceDataTableBean;
+    }
+
+    public PaymentDataTableBean getPaymentDataTableBean() {
+        return paymentDataTableBean;
+    }
+
+    public void setPaymentDataTableBean(PaymentDataTableBean paymentDataTableBean) {
+        this.paymentDataTableBean = paymentDataTableBean;
+    }
+
+    public ConsumptionDataTableBean getConsumptionDataTableBean() {
+        return consumptionDataTableBean;
+    }
+
+    public void setConsumptionDataTableBean(ConsumptionDataTableBean consumptionDataTableBean) {
+        this.consumptionDataTableBean = consumptionDataTableBean;
+    }
+
+    public StatementDataTableBean getStatementDataTableBean() {
+        return statementDataTableBean;
+    }
+
+    public void setStatementDataTableBean(StatementDataTableBean statementDataTableBean) {
+        this.statementDataTableBean = statementDataTableBean;
     }
 
     public String getBeanName() {
@@ -57,6 +101,8 @@ public class DataTableFind implements Serializable {
     }
 
     public void find(javax.faces.event.ActionEvent e) {
+
+*******************************
         DataTable iceTable = ((DataTableBindings) (FacesUtils.getManagedBean("dataTableBindings"))).getTable(this.getClass());
 
         DataTable.SearchType type = null;

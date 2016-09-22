@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <managed-bean>
+        <managed-bean-name>userDataTableBean</managed-bean-name>
+        <managed-bean-class>controller.UserDataTableBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>serviceDataTableBean</managed-bean-name>
+        <managed-bean-class>controller.ServiceDataTableBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>consumptionDataTableBean</managed-bean-name>
+        <managed-bean-class>controller.ConsumptionDataTableBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>paymentDataTableBean</managed-bean-name>
+        <managed-bean-class>controller.PaymentDataTableBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>statementDataTableBean</managed-bean-name>
+        <managed-bean-class>controller.StatementDataTableBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>dataTableSearchBean</managed-bean-name>
+        <managed-bean-class>controller.DataTableSearchBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>userDataTableBean</property-name>
+            <value>#{userDataTableBean}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>serviceDataTableBean</property-name>
+            <value>#{serviceDataTableBean}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>consumptionDataTableBean</property-name>
+            <value>#{consumptionDataTableBean}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>paymentDataTableBean</property-name>
+            <value>#{paymentDataTableBean}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>statementDataTableBean</property-name>
+            <value>#{statementDataTableBean}</value>
+        </managed-property>
+    </managed-bean>
+
+</faces-config>
