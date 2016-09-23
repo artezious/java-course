@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 @ManagedBean
 @ViewScoped
-public class StatementDataTableBean implements Serializable {
+public class StatementDataTableBean extends DataTableSearchBean implements Serializable {
 
     private static final long serialVersionUID = -7718234972982720979L;
 

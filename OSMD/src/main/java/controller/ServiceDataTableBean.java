@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 @ManagedBean(name = "serviceDataTableBean")
 @ViewScoped
-public class ServiceDataTableBean implements Serializable {
+public class ServiceDataTableBean extends DataTableSearchBean implements Serializable {
 
     private static final long serialVersionUID = 8378097393814723738L;
 

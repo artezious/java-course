@@ -10,7 +10,7 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "PAYMENT", schema = "PUBLIC", catalog = "DATABASES")
+@Table(name = "PAYMENT")
 public class PaymentEntity implements Serializable {
 
     private static final long serialVersionUID = -198030189311564206L;

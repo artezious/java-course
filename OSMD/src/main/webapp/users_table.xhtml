@@ -33,77 +33,78 @@
             <h:panelGrid columns="2" style="width:100%;">
                 <h:panelGrid columns="2">
                     <h:outputText value="Search Query:"/>
-                    <h:inputText id="searchQuery" value="#{userDataTableFind.searchQuery}"/>
+                    <h:inputText id="searchQuery" value="#{userDataTableBean.searchQuery}"/>
 
                     <h:outputText value="Case Sensitive:"/>
-                    <h:selectBooleanCheckbox id="caseSensitive" value="#{userDataTableFind.caseSensitive}"/>
+                    <h:selectBooleanCheckbox id="caseSensitive" value="#{userDataTableBean.caseSensitive}"/>
 
                     <h:outputText value="Columns To Search:"/>
-                    <h:selectManyCheckbox id="selectedColumns" value="#{userDataTableFind.selectedColumns}">
-                        <f:selectItems value="#{aceDataTableFind.COLUMNS}"/>
+                    <h:selectManyCheckbox id="selectedColumns" value="#{userDataTableBean.selectedColumns}">
+                        <f:selectItems value="#{userDataTableBean.COLUMNS}"/>
                     </h:selectManyCheckbox>
 
                     <h:outputText value="Search Type:"/>
-                    <h:selectOneRadio id="selectedMode" value="#{userDataTableFind.selectedSearchMode}">
-                        <f:selectItems value="#{aceDataTableFind.SEARCH_MODES}"/>
+                    <h:selectOneRadio id="selectedMode" value="#{userDataTableBean.selectedSearchMode}">
+                        <f:selectItems value="#{userDataTableBean.SEARCH_MODES}"/>
                     </h:selectOneRadio>
 
                     <h:outputText value="Effect To Use:"/>
-                    <h:selectOneRadio id="selectedType" value="#{userDataTableFind.selectedEffectType}">
-                        <f:selectItems value="#{aceDataTableFind.EFFECT_TYPES}"/>
+                    <h:selectOneRadio id="selectedType" value="#{userDataTableBean.selectedEffectType}">
+                        <f:selectItems value="#{userDataTableBean.EFFECT_TYPES}"/>
                     </h:selectOneRadio>
                 </h:panelGrid>
                 <h:panelGrid columns="1">
-                    <h:commandButton id="findNext" value="Find Next" actionListener="#{userDataTableFind.find}"
+                    <h:commandButton id="findNext" value="Find Next" actionListener="#{userDataTableBean.find}"
                                      style="float:right;"/>
-                    <h:commandButton id="reset" value="Reset" actionListener="#{userDataTableFind.reset}"
+                    <h:commandButton id="reset" value="Reset" actionListener="#{userDataTableBean.reset}"
                                      style="float:right;"/>
                 </h:panelGrid>
             </h:panelGrid>
             <ace:messages id="msgs" for="@inView"/>
         </h:panelGroup>
+        </h:panelGroup>
 
 
-        <ace:panel header="Users List" toggleable="true" style="width: auto" collapsed="true">
-            <ace:dataTable id="userTable"
-                           value="#{userDataTableBean.userEntityList}"
-                           selectionMode="single"
-                           var="user"
-                           rowSelectListener="#{userDataTableBean.selectionListener}"
-                           paginator="true"
-                           paginatorPosition="bottom"
-                           rows="20">
-                <ace:column id="id" headerText="ID"
-                            sortBy="#{user.id}"
-                            filterBy="#{user.id}"
-                            filterMatchMode="contains">#{user.id}</ace:column>
-                <ace:column id="name"
-                            headerText="First Name"
-                            sortBy="#{user.name}"
-                            filterBy="#{user.name}"
-                            filterMatchMode="contains"> #{user.name} </ace:column>
-                <ace:column id="surname"
-                            headerText="Surname"
-                            sortBy="#{user.surname}"
-                            filterBy="#{user.surname}"
-                            filterMatchMode="contains">#{user.surname}</ace:column>
-                <ace:column id="address"
-                            headerText="Address"
-                            sortBy="#{user.address}"
-                            filterBy="#{user.address}"
-                            filterMatchMode="contains">#{user.address}</ace:column>
-                <ace:column id="telephone"
-                            headerText="Telephone"
-                            sortBy="#{user.telephone}"
-                            filterBy="#{user.telephone}"
-                            filterMatchMode="contains">#{user.telephone}</ace:column>
-                <ace:column id="email"
-                            headerText="Email"
-                            sortBy="#{user.email}"
-                            filterBy="#{user.email}"
-                            filterMatchMode="contains">#{user.email}</ace:column>
-            </ace:dataTable>
-        </ace:panel>
+        <!-- <ace:panel header="Users List" toggleable="true" style="width: auto" collapsed="true">
+             <ace:dataTable id="userTable"
+                            value="#{userDataTableBean.userEntityList}"
+                            selectionMode="single"
+                            var="user"
+                            rowSelectListener="#{userDataTableBean.selectionListener}"
+                            paginator="true"
+                            paginatorPosition="bottom"
+                            rows="20">
+                 <ace:column id="id" headerText="ID"
+                             sortBy="#{user.id}"
+                             filterBy="#{user.id}"
+                             filterMatchMode="contains">#{user.id}</ace:column>
+                 <ace:column id="name"
+                             headerText="First Name"
+                             sortBy="#{user.name}"
+                             filterBy="#{user.name}"
+                             filterMatchMode="contains"> #{user.name} </ace:column>
+                 <ace:column id="surname"
+                             headerText="Surname"
+                             sortBy="#{user.surname}"
+                             filterBy="#{user.surname}"
+                             filterMatchMode="contains">#{user.surname}</ace:column>
+                 <ace:column id="address"
+                             headerText="Address"
+                             sortBy="#{user.address}"
+                             filterBy="#{user.address}"
+                             filterMatchMode="contains">#{user.address}</ace:column>
+                 <ace:column id="telephone"
+                             headerText="Telephone"
+                             sortBy="#{user.telephone}"
+                             filterBy="#{user.telephone}"
+                             filterMatchMode="contains">#{user.telephone}</ace:column>
+                 <ace:column id="email"
+                             headerText="Email"
+                             sortBy="#{user.email}"
+                             filterBy="#{user.email}"
+                             filterMatchMode="contains">#{user.email}</ace:column>
+             </ace:dataTable>
+         </ace:panel>-->
     </h:form>
 </h:body>
 </html>

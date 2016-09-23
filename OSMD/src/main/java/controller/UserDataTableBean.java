@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 @ManagedBean(name = "userDataTableBean")
 @ViewScoped
-public class UserDataTableBean implements Serializable {
+public class UserDataTableBean extends DataTableSearchBean implements Serializable {
 
     private static final long serialVersionUID = 422609272394303465L;
 
@@ -34,15 +34,15 @@ public class UserDataTableBean implements Serializable {
     @PostConstruct
     public void initData() {
 
-    /*    userEntityList = new ArrayList();
+       /* userEntityList = new ArrayList();
         UserEntity userEntity = new UserEntity();
         userEntity.setAddress("address");
         userEntity.setEmail("kjfaksdf");
         userEntity.setName("name");
         userEntity.setTelephone("1239182398");
         userEntity.setSurname("second name");
-        userEntityList.add(userEntity);
-*/
+        userEntityList.add(userEntity);*/
+
         userEntityList.addAll(userDAO.getUsers());
 
         //просто проверим что поднимается нормально - дальше будешь уже щелкать и разбираться ок? ok

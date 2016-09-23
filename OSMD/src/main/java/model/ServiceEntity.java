@@ -9,7 +9,7 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "SERVICE", schema = "PUBLIC", catalog = "DATABASES")
+@Table(name = "SERVICE")
 public class ServiceEntity implements Serializable {
 
     private static final long serialVersionUID = -7554164565613278171L;

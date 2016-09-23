@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "STATEMENT", schema = "PUBLIC", catalog = "DATABASES")
+@Table(name = "STATEMENT")
 public class StatementEntity implements Serializable {
 
     private static final long serialVersionUID = 3162663495332691934L;
