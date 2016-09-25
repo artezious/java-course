@@ -4,13 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ace="http://www.icefaces.org/icefaces/components"
-      xmlns:ice="http://www.icesoft.com/icefaces/component" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
 <h:head>
     <title>Master/Details demo</title>
     <ice:outputStyle href="./xmlhttp/css/rime/rime.css"/>
 </h:head>
 <h:body styleClass="ice-skin-rime">
-
     <h:form id="menu">
         <div style="text-align: left">
             <ace:menuButton id="menuButton" effect="SLIDE" effectDuration="200" value="Menu Button">
@@ -33,25 +32,25 @@
             <h:panelGrid columns="2" style="width:100%;">
                 <h:panelGrid columns="2">
                     <h:outputText value="Search Query:"/>
-                    <h:inputText id="searchQuery" value="#{userDataTableBean.searchQuery}"/>
+                    <h:inputText id="searchQuery" value="#{dataTableSearchBean.searchQuery}"/>
 
-                    <h:outputText value="Case Sensitive:"/>
-                    <h:selectBooleanCheckbox id="caseSensitive" value="#{userDataTableBean.caseSensitive}"/>
+                    <!--<h:outputText value="Case Sensitive:"/>-->
+                    <!--<h:selectBooleanCheckbox id="caseSensitive" value="#{dataTableSearchBean.caseSensitive}"/>-->
 
-                    <h:outputText value="Columns To Search:"/>
-                    <h:selectManyCheckbox id="selectedColumns" value="#{userDataTableBean.selectedColumns}">
-                        <f:selectItems value="#{userDataTableBean.COLUMNS}"/>
-                    </h:selectManyCheckbox>
+                    <!--<h:outputText value="Columns To Search:"/>-->
+                    <!--<h:selectManyCheckbox id="selectedColumns" value="#{dataTableSearchBean.selectedColumns}">-->
+                    <!--<f:selectItems value="#{dataTableSearchBean.COLUMNS}"/>-->
+                    <!--</h:selectManyCheckbox>-->
 
-                    <h:outputText value="Search Type:"/>
-                    <h:selectOneRadio id="selectedMode" value="#{userDataTableBean.selectedSearchMode}">
-                        <f:selectItems value="#{userDataTableBean.SEARCH_MODES}"/>
-                    </h:selectOneRadio>
+                    <!--<h:outputText value="Search Type:"/>-->
+                    <!--<h:selectOneRadio id="selectedMode" value="#{dataTableSearchBean.selectedSearchMode}">-->
+                    <!--<f:selectItems value="#{dataTableSearchBean.SEARCH_MODES}"/>-->
+                    <!--</h:selectOneRadio>-->
 
-                    <h:outputText value="Effect To Use:"/>
-                    <h:selectOneRadio id="selectedType" value="#{userDataTableBean.selectedEffectType}">
-                        <f:selectItems value="#{userDataTableBean.EFFECT_TYPES}"/>
-                    </h:selectOneRadio>
+                    <!--<h:outputText value="Effect To Use:"/>-->
+                    <!--<h:selectOneRadio id="selectedType" value="#{dataTableSearchBean.selectedEffectType}">-->
+                    <!--<f:selectItems value="#{dataTableSearchBean.EFFECT_TYPES}"/>-->
+                    <!--</h:selectOneRadio>-->
                 </h:panelGrid>
                 <h:panelGrid columns="1">
                     <h:commandButton id="findNext" value="Find Next" actionListener="#{userDataTableBean.find}"
@@ -60,13 +59,13 @@
                                      style="float:right;"/>
                 </h:panelGrid>
             </h:panelGrid>
-            <ace:messages id="msgs" for="@inView"/>
         </h:panelGroup>
         </h:panelGroup>
 
 
-        <!-- <ace:panel header="Users List" toggleable="true" style="width: auto" collapsed="true">
-             <ace:dataTable id="userTable"
+        <ace:panel header="Users List" toggleable="true" style="width: auto" collapsed="true">
+            <ace:dataTable binding="#{dataTableBindings.tables[userDataTableBean.clazz]}"
+                           id="userTable"
                             value="#{userDataTableBean.userEntityList}"
                             selectionMode="single"
                             var="user"
@@ -104,7 +103,7 @@
                              filterBy="#{user.email}"
                              filterMatchMode="contains">#{user.email}</ace:column>
              </ace:dataTable>
-         </ace:panel>-->
+        </ace:panel>
     </h:form>
 </h:body>
 </html>
