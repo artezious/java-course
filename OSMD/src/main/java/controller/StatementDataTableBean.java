@@ -1,7 +1,9 @@
 package controller;
 
 import dao.StatementDAO;
+import model.PaymentEntity;
 import model.StatementEntity;
+import model.UserEntity;
 import org.icefaces.ace.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +20,7 @@ import java.util.logging.Logger;
  * Created by WEO on 9/19/16.
  */
 
-@ManagedBean
+@ManagedBean(name = "statementDataTableBean")
 @ViewScoped
 public class StatementDataTableBean extends DataTableSearchBean implements Serializable {
 
@@ -26,9 +28,12 @@ public class StatementDataTableBean extends DataTableSearchBean implements Seria
 
     Logger logger = Logger.getLogger(StatementDataTableBean.class.getName());
     private List<StatementEntity> statementEntityList = new ArrayList();
+    private List<UserEntity> userEntityList = new ArrayList();
+    private List<PaymentEntity> paymentEntityList = new ArrayList();
     private StatementDAO statementDAO = new StatementDAO();
     private StatementEntity statementDetails;
     private boolean detailsHidden = true;
+    private String[] selectedColumns = new String[]{"id", "debt"};
 
     @PostConstruct
     public void init() {
@@ -38,6 +43,10 @@ public class StatementDataTableBean extends DataTableSearchBean implements Seria
     public void save() {
         statementDAO.saveStatement(statementDetails);
         statementEntityList = statementDAO.getStatement();
+    }
+
+    public void find(javax.faces.event.ActionEvent e) {
+        find(this);
     }
 
     public void selectionListener(SelectEvent event) {
@@ -83,5 +92,29 @@ public class StatementDataTableBean extends DataTableSearchBean implements Seria
 
     public void setDetailsHidden(boolean detailsHiddem) {
         this.detailsHidden = detailsHiddem;
+    }
+
+    public String[] getSelectedColumns() {
+        return selectedColumns;
+    }
+
+    public void setSelectedColumns(String[] selectedColumns) {
+        this.selectedColumns = selectedColumns;
+    }
+
+    public List<UserEntity> getUserEntityList() {
+        return userEntityList;
+    }
+
+    public void setUserEntityList(List<UserEntity> userEntityList) {
+        this.userEntityList = userEntityList;
+    }
+
+    public List<PaymentEntity> getPaymentEntityList() {
+        return paymentEntityList;
+    }
+
+    public void setPaymentEntityList(List<PaymentEntity> paymentEntityList) {
+        this.paymentEntityList = paymentEntityList;
     }
 }

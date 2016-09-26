@@ -2,6 +2,7 @@ package controller;
 
 import dao.ConsumptionDAO;
 import model.ConsumptionEntity;
+import model.ServiceEntity;
 import org.icefaces.ace.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
@@ -28,6 +29,7 @@ public class ConsumptionDataTableBean extends DataTableSearchBean implements Ser
     private List<ConsumptionEntity> consumptionEntityList = new ArrayList();
     private ConsumptionDAO consumptionDAO = new ConsumptionDAO();
     private ConsumptionEntity consumptionDetails;
+    private List<ServiceEntity> serviceEntityList = new ArrayList();
     private boolean detailsHidden = true;
 
     @PostConstruct
@@ -38,6 +40,10 @@ public class ConsumptionDataTableBean extends DataTableSearchBean implements Ser
     public void save() {
         consumptionDAO.saveConsumption(getConsumptionDetails());
         consumptionEntityList = consumptionDAO.getConsumptions();
+    }
+
+    public void find(javax.faces.event.ActionEvent e) {
+        find(this);
     }
 
     public void selectionListener(SelectEvent event) {
@@ -84,5 +90,13 @@ public class ConsumptionDataTableBean extends DataTableSearchBean implements Ser
 
     public void setDetailsHidden(boolean detailsHidden) {
         this.detailsHidden = detailsHidden;
+    }
+
+    public List<ServiceEntity> getServiceEntityList() {
+        return serviceEntityList;
+    }
+
+    public void setServiceEntityList(List<ServiceEntity> serviceEntityList) {
+        this.serviceEntityList = serviceEntityList;
     }
 }

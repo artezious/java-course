@@ -1,6 +1,7 @@
 package controller;
 
 import dao.PaymentDAO;
+import model.ConsumptionEntity;
 import model.PaymentEntity;
 import org.icefaces.ace.event.SelectEvent;
 
@@ -27,6 +28,7 @@ public class PaymentDataTableBean extends DataTableSearchBean implements Seriali
 
     Logger logger = Logger.getLogger(PaymentDataTableBean.class.getName());
     private List<PaymentEntity> paymentEntityList = new ArrayList();
+    private List<ConsumptionEntity> consumptionEntityList = new ArrayList();
     private PaymentDAO paymentDAO = new PaymentDAO();
     private PaymentEntity paymentDetails;
     private boolean detailsHidden = true;
@@ -84,5 +86,13 @@ public class PaymentDataTableBean extends DataTableSearchBean implements Seriali
 
     public void setDetailsHidden(boolean detailsHidden) {
         this.detailsHidden = detailsHidden;
+    }
+
+    public List<ConsumptionEntity> getConsumptionEntityList() {
+        return consumptionEntityList;
+    }
+
+    public void setConsumptionEntityList(List<ConsumptionEntity> consumptionEntityList) {
+        this.consumptionEntityList = consumptionEntityList;
     }
 }

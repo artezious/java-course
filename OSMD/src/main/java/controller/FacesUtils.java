@@ -210,7 +210,7 @@ public class FacesUtils implements Serializable {
             return toReturn != null ? toReturn : defaultVal;
         } catch (Exception failedGet) {
         }
-
+        
         return defaultVal;
     }
 
@@ -256,9 +256,9 @@ public class FacesUtils implements Serializable {
     /**
      * Method to return the value specified via an f:attribute component
      *
-     * @param event of the parent that had the f:attribute
-     * @param name  of the param
-     * @return the Object value, which may be null if the attribute wasn't found
+     *@param event of the parent that had the f:attribute
+     *@param name of the param
+     *@return the Object value, which may be null if the attribute wasn't found
      */
     public static Object getFAttribute(ActionEvent event, String name) {
         return event.getComponent().getAttributes().get(name);
@@ -333,7 +333,7 @@ public class FacesUtils implements Serializable {
         // Check if we have enough items to warrant the list logic
         if (base.length > 1) {
             StringBuilder toReturn = new StringBuilder(base.length * 5);
-
+            
             for (int i = 0; i < base.length; i++) {
                 toReturn.append(base[i]);
 
@@ -357,17 +357,16 @@ public class FacesUtils implements Serializable {
      * Method to refresh the browser to the specified url by adding a META-REFRESH tag to the response
      */
     public static void refreshBrowser(String url) {
-        try {
+        try{
             HttpServletResponse response =
                     (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-
+            
             if (response != null) {
                 response.setHeader("Refresh", "0; URL=" + response.encodeRedirectURL(url));
             }
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) { }
     }
-
+    
     /**
      * Method to redirect the browser to the specified url via the ExternalContext redirect method
      */

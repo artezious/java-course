@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+
 /**
  * Created by WEO on 9/18/16.
  */
@@ -30,15 +31,25 @@ public class UserDataTableBean extends DataTableSearchBean implements Serializab
     private UserDAO userDAO = new UserDAO();
     private UserEntity userDetails;
     private boolean detailsHidden = true;
+    private String[] selectedColumns = new String[]{"id", "name", "surname", "address", "telephone", "email"};
 
     @PostConstruct
     public void initData() {
 
        /* userEntityList = new ArrayList();
         UserEntity userEntity = new UserEntity();
-        userEntity.setAddress("address");
+        userEntity.setAddress("address111");
         userEntity.setEmail("kjfaksdf");
         userEntity.setName("name");
+        userEntity.setTelephone("1239182398");
+        userEntity.setSurname("second name");
+        userEntityList.add(userEntity);
+
+
+        userEntity = new UserEntity();
+        userEntity.setAddress("address222");
+        userEntity.setEmail("kjfaksdf2");
+        userEntity.setName("name2");
         userEntity.setTelephone("1239182398");
         userEntity.setSurname("second name");
         userEntityList.add(userEntity);*/
@@ -68,6 +79,10 @@ public class UserDataTableBean extends DataTableSearchBean implements Serializab
         }
     }
 
+    public void find(javax.faces.event.ActionEvent e) {
+        find(this);
+    }
+
     public void selectionListener(SelectEvent event) {
         UserEntity temp = (UserEntity) event.getObject();
         setUserDetails(temp);
@@ -79,10 +94,6 @@ public class UserDataTableBean extends DataTableSearchBean implements Serializab
         if (source != null && source.getClass().equals(HtmlInputText.class)) {
             logger.info("change ---> THE FIELD " + ((HtmlInputText) source).getId());
         }
-    }
-
-    public void find(javax.faces.event.ActionEvent e) {
-        find(this);
     }
 
 
@@ -118,5 +129,11 @@ public class UserDataTableBean extends DataTableSearchBean implements Serializab
         this.detailsHidden = detailsHidden;
     }
 
+    public String[] getSelectedColumns() {
+        return selectedColumns;
+    }
 
+    public void setSelectedColumns(String[] selectedColumns) {
+        this.selectedColumns = selectedColumns;
+    }
 }

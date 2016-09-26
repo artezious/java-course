@@ -24,6 +24,23 @@
                 <ace:menuItem value="Statement" url="statement_table.xhtml"
                               icon="ui-icon ui-icon-home"/>
             </ace:menuButton>
+            <h:panelGroup styleClass="componentBox">
+                <h:panelGroup style="border: 1px solid #CDCDCD;">
+                    <h:panelGrid columns="2">
+                        <h:panelGrid columns="2" style="float:left">
+                            <h:outputText value="Search Query:"/>
+                            <h:inputText id="searchQuery" value="#{consumptionDataTableBean.searchQuery}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:commandButton id="findNext" value="Find Next"
+                                             actionListener="#{consumptionDataTableBean.find}"
+                                             style="float:left;"/>
+                            <h:commandButton id="reset" value="Reset" actionListener="#{consumptionDataTableBean.reset}"
+                                             style="float:left;"/>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </h:panelGroup>
+            </h:panelGroup>
         </div>
     </h:form>
     <h:form id="consumptions">
@@ -39,6 +56,11 @@
                                 sortBy="#{consumption.id}"
                                 filterBy="#{consumption.id}"
                                 filterMatchMode="contains">#{consumption.id}</ace:column>
+                    <ace:column id="service_name"
+                                headerText="Service Name"
+                                sortBy="#{consumption.serviceEntity.servicename}"
+                                filterBy="#{consumption.serviceEntity.servicename}"
+                                filterMatchMode="contains"> #{consumption.serviceEntity.servicename} </ace:column>
                     <ace:column id="lv"
                                 headerText="Last value"
                                 sortBy="#{consumption.lv}"
