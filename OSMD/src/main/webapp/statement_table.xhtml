@@ -51,7 +51,11 @@
                                value="#{statementDataTableBean.statementEntityList}"
                                selectionMode="single"
                                var="statement"
-                               rowSelectListener="#{statementDataTableBean.selectionListener}">
+                               rowSelectListener="#{statementDataTableBean.selectionListener}"
+                               paginator="true"
+                               paginatorPosition="bottom"
+                               binding="#{dataTableBindings.tables[statementDataTableBean.clazz]}"
+                               rows="20">
                     <ace:column id="id"
                                 headerText="ID"
                                 sortBy="#{statement.id}"

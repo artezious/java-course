@@ -14,24 +14,9 @@ import java.io.Serializable;
 @CustomScoped(value = "#{window}")
 public class DataTableSearchBean implements Serializable {
 
-    /*  public static final String BEAN_NAME = "dataTableSearchBean";*/
-  /*  private final SelectItem[] SEARCH_MODES = {new SelectItem("startsWith", "Starts With"),
-            new SelectItem("endsWith", "Ends With"),
-            new SelectItem("contains", "Contains"),
-            new SelectItem("exact", "Exact Match")};
-    private final SelectItem[] COLUMNS = {new SelectItem("id", "Id"),
-            new SelectItem("name", "Name"),
-            new SelectItem("surname", "Surname"),
-            new SelectItem("address", "Address"),
-            new SelectItem("telephone", "Telephone"),
-            new SelectItem("email", "Email")};
-    private final SelectItem[] EFFECT_TYPES = {new SelectItem("none", "None"),
-            new SelectItem("default", "Default (Highlight)"),
-            new SelectItem("pulsate", "Pulsate")};*/
     private String selectedEffectType = "default";
     private String selectedSearchMode = "contains";
     private String searchQuery = "";
-    /*private String[] selectedColumns = new String[]{"id", "name", "surname", "address", "telephone", "email"};*/
     private int lastFoundIndex = -1;
 
     private boolean caseSensitive;
@@ -39,17 +24,6 @@ public class DataTableSearchBean implements Serializable {
     public DataTableSearchBean() {
     }
 
-  /*  public SelectItem[] getSEARCH_MODES() {
-        return SEARCH_MODES;
-    }
-
-    public SelectItem[] getCOLUMNS() {
-        return COLUMNS;
-    }
-
-    public SelectItem[] getEFFECT_TYPES() {
-        return EFFECT_TYPES;
-    }*/
 
     public String getSelectedEffectType() {
         return selectedEffectType;
@@ -105,28 +79,28 @@ public class DataTableSearchBean implements Serializable {
         return getClass();
     }
 
-    public void find(Object bean) {
+    public void find(Object bean, String[] selectedColumnsForSearch) {
 
-        DataTable iceTable = ((DataTableBindings) (FacesUtils.getManagedBean("dataTableBindings"))).getTable(bean.getClass());
+        DataTable dataTableWhereSearching = ((DataTableBindings) (FacesUtils.getManagedBean("dataTableBindings"))).getTable(bean.getClass());
 
-        String[] selectedColumnsForSearch = new String[iceTable.getColumns().size()];
+        //      String[] selectedColumnsForSearch = new String[dataTableWhereSearching.getColumns().size()];
         int index = 0;
-        for (Column col : iceTable.getColumns()) {
+        for (Column col : dataTableWhereSearching.getColumns()) {
             selectedColumnsForSearch[index++] = col.getId();
         }
-        int newFoundIndex = iceTable.findRow(searchQuery, selectedColumnsForSearch, lastFoundIndex + 1);
+        int newFoundIndex = dataTableWhereSearching.findRow(searchQuery, selectedColumnsForSearch, lastFoundIndex + 1);
 
         if (newFoundIndex < 0) {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(iceTable.getClientId(context),
+            context.addMessage(dataTableWhereSearching.getClientId(context),
                     new FacesMessage("Search starting at index " + (lastFoundIndex + 1) + " for \"" + searchQuery + "\" did not return a result."));
             return;
         }
 
         lastFoundIndex = newFoundIndex;
 
-        iceTable.navigateToRow(lastFoundIndex, DataTable.SearchEffect.HIGHLIGHT);
-        iceTable.navigateToRow(lastFoundIndex, DataTable.SearchEffect.PULSATE);
+        dataTableWhereSearching.navigateToRow(lastFoundIndex, DataTable.SearchEffect.HIGHLIGHT);
+        dataTableWhereSearching.navigateToRow(lastFoundIndex, DataTable.SearchEffect.PULSATE);
     }
 
     public void reset(javax.faces.event.ActionEvent e) {
@@ -135,3 +109,8 @@ public class DataTableSearchBean implements Serializable {
 
 
 }
+/*
+    String[] selectedColumnsForSearch = new String[]{"id"};
+    int index = 0;
+        for (Column col : iceTable.getColumns()) {
+//    selectedColumnsForSearch[index++] = col.;*/

@@ -45,9 +45,9 @@ public class StatementDataTableBean extends DataTableSearchBean implements Seria
         statementEntityList = statementDAO.getStatement();
     }
 
-    public void find(javax.faces.event.ActionEvent e) {
+  /*  public void find(javax.faces.event.ActionEvent e) {
         find(this);
-    }
+    }*/
 
     public void selectionListener(SelectEvent event) {
         StatementEntity temp = (StatementEntity) event.getObject();

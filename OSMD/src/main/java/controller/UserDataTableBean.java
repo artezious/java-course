@@ -79,10 +79,10 @@ public class UserDataTableBean extends DataTableSearchBean implements Serializab
         }
     }
 
-    public void find(javax.faces.event.ActionEvent e) {
-        find(this);
-    }
-
+    /*   public void find(javax.faces.event.ActionEvent e) {
+           find(this);
+       }
+   */
     public void selectionListener(SelectEvent event) {
         UserEntity temp = (UserEntity) event.getObject();
         setUserDetails(temp);

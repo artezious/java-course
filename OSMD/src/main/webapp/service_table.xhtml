@@ -33,7 +33,11 @@
                                value="#{serviceDataTableBean.serviceEntityList}"
                                selectionMode="single"
                                var="service"
-                               rowSelectListener="#{serviceDataTableBean.selectionListener}">
+                               rowSelectListener="#{serviceDataTableBean.selectionListener}"
+                               paginator="true"
+                               paginatorPosition="bottom"
+                               binding="#{dataTableBindings.tables[serviceDataTableBean.clazz]}"
+                               rows="20">
                     <ace:column id="id"
                                 headerText="ID"
                                 sortBy="#{service.id}"

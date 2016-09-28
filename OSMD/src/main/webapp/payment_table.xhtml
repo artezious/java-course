@@ -33,7 +33,11 @@
                                value="#{paymentDataTableBean.paymentEntityList}"
                                selectionMode="single"
                                var="payment"
-                               rowSelectListener="#{paymentDataTableBean.selectionListener}">
+                               rowSelectListener="#{paymentDataTableBean.selectionListener}"
+                               paginator="true"
+                               paginatorPosition="bottom"
+                               binding="#{dataTableBindings.tables[paymentDataTableBean.clazz]}"
+                               rows="20">
                     <ace:column id="id"
                                 headerText="ID"
                                 sortBy="#{payment.id}"

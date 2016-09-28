@@ -18,7 +18,7 @@ public class ConsumptionEntity implements Serializable {
     private Integer rtv;
     private Integer consumed;
     private Integer totalConsumed;
-    private ServiceEntity serviceEntity;
+    private ServiceEntity serviceEntityID;
     private Set<PaymentEntity> paymentEntity;
 
     public ConsumptionEntity() {
@@ -35,12 +35,12 @@ public class ConsumptionEntity implements Serializable {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Service_ID")
-    public ServiceEntity getServiceEntity() {
-        return serviceEntity;
+    public ServiceEntity getServiceEntityID() {
+        return serviceEntityID;
     }
 
-    public void setServiceEntity(ServiceEntity serviceEntities) {
-        this.serviceEntity = serviceEntities;
+    public void setServiceEntityID(ServiceEntity serviceEntities) {
+        this.serviceEntityID = serviceEntities;
     }
 
     @Id
@@ -103,7 +103,7 @@ public class ConsumptionEntity implements Serializable {
                 ", rtv=" + rtv +
                 ", consumed=" + consumed +
                 ", totalConsumed=" + totalConsumed +
-                ", serviceEntity=" + serviceEntity +
+                ", serviceEntity=" + serviceEntityID +
                 ", paymentEntity=" + paymentEntity +
                 '}';
     }
@@ -121,7 +121,7 @@ public class ConsumptionEntity implements Serializable {
         if (consumed != null ? !consumed.equals(that.consumed) : that.consumed != null) return false;
         if (totalConsumed != null ? !totalConsumed.equals(that.totalConsumed) : that.totalConsumed != null)
             return false;
-        if (serviceEntity != null ? !serviceEntity.equals(that.serviceEntity) : that.serviceEntity != null)
+        if (serviceEntityID != null ? !serviceEntityID.equals(that.serviceEntityID) : that.serviceEntityID != null)
             return false;
         return paymentEntity != null ? paymentEntity.equals(that.paymentEntity) : that.paymentEntity == null;
 
@@ -134,8 +134,6 @@ public class ConsumptionEntity implements Serializable {
         result = 31 * result + (rtv != null ? rtv.hashCode() : 0);
         result = 31 * result + (consumed != null ? consumed.hashCode() : 0);
         result = 31 * result + (totalConsumed != null ? totalConsumed.hashCode() : 0);
-        //     result = 31 * result + (serviceEntity != null ? serviceEntity.hashCode() : 0);
-        //     result = 31 * result + (paymentEntity != null ? paymentEntity.hashCode() : 0);
         return result;
     }
 }

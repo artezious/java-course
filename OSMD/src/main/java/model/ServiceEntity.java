@@ -21,7 +21,7 @@ public class ServiceEntity implements Serializable {
     public ServiceEntity() {
     }
 
-    @OneToMany(mappedBy = "serviceEntity", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "serviceEntityID", cascade = CascadeType.ALL)
     public Set<ConsumptionEntity> getConsumptionEntities() {
         return consumptionEntities;
     }

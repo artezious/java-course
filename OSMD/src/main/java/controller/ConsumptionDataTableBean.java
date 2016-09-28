@@ -29,8 +29,9 @@ public class ConsumptionDataTableBean extends DataTableSearchBean implements Ser
     private List<ConsumptionEntity> consumptionEntityList = new ArrayList();
     private ConsumptionDAO consumptionDAO = new ConsumptionDAO();
     private ConsumptionEntity consumptionDetails;
-    private List<ServiceEntity> serviceEntityList = new ArrayList();
+    private ServiceEntity serviceEntity = new ServiceEntity();
     private boolean detailsHidden = true;
+    private String[] selectedColumns = new String[]{"id", "serviceEntityID", "lv", "rtv", "consumed", "totalConsumed"};
 
     @PostConstruct
     public void init() {
@@ -43,7 +44,7 @@ public class ConsumptionDataTableBean extends DataTableSearchBean implements Ser
     }
 
     public void find(javax.faces.event.ActionEvent e) {
-        find(this);
+        find(this, selectedColumns);
     }
 
     public void selectionListener(SelectEvent event) {
@@ -92,11 +93,13 @@ public class ConsumptionDataTableBean extends DataTableSearchBean implements Ser
         this.detailsHidden = detailsHidden;
     }
 
-    public List<ServiceEntity> getServiceEntityList() {
-        return serviceEntityList;
+    public ServiceEntity getServiceEntity() {
+        return serviceEntity;
     }
 
-    public void setServiceEntityList(List<ServiceEntity> serviceEntityList) {
-        this.serviceEntityList = serviceEntityList;
+    public void setServiceEntity(ServiceEntity serviceEntity) {
+        this.serviceEntity = serviceEntity;
     }
+
+
 }
