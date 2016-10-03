@@ -3,14 +3,13 @@ package com;
 import java.io.IOException;
 
 import static com.ThreadInputAndCount.readFileaAndCount;
-import static com.ThreadOutputFile.writeFile;
 
 /**
  * Created by WEO on 10/2/16.
  */
 public class TestThread extends Thread {
 
-    public String fileName;
+    private String fileName;
 
     public TestThread(String fileName) {
         this.fileName = fileName;
@@ -19,11 +18,15 @@ public class TestThread extends Thread {
     @Override
     public void run() {
 
+        ThreadOutputFile threadOutputFile = null;
         try {
-            writeFile(readFileaAndCount(fileName), fileName);
+            threadOutputFile = new ThreadOutputFile(readFileaAndCount(fileName), fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        assert threadOutputFile != null;
+        threadOutputFile.start();
 
     }
 }

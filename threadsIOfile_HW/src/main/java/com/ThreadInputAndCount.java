@@ -12,7 +12,6 @@ import static com.Service.sumOfDigitsInFile;
  */
 public class ThreadInputAndCount extends Thread {
 
-
     public static int readFileaAndCount(String fileName) throws IOException {
         File fileIn = new File(fileName);
         FileReader fileReader = new FileReader(fileIn);

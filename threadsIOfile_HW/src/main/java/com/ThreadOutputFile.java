@@ -10,11 +10,23 @@ import java.io.IOException;
  */
 public class ThreadOutputFile extends Thread {
 
-    public static void writeFile(int sumOfDigits, String fileName) throws IOException {
+    private int sumOfDigits;
+    private String fileName;
+
+    public ThreadOutputFile(int sumOfDigits, String fileName) {
+        this.sumOfDigits = sumOfDigits;
+        this.fileName = fileName;
+    }
+    @Override
+    public void run() {
         File fileOut = new File(fileName.concat("_sum"));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileOut, true));
-        bufferedWriter.write(sumOfDigits + "\n");
-        bufferedWriter.flush();
-        bufferedWriter.close();
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileOut, true));
+            bufferedWriter.write(sumOfDigits + "\n");
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("Ошибка");
+        }
     }
 }
